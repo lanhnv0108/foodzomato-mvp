@@ -9,14 +9,10 @@ import com.example.apifood.utils.Constant
 
 @Suppress("DEPRECATION")
 class FoodRemoteDataSource : FoodDataSource.Remote {
-    private val baseUrl = Constant.BASE_URL + Constant.BASE_CITY
 
-    /**
-     * Get from remote
-     */
+    private val baseUrl = Constant.BASE_URL + Constant.BASE_CITY
     override fun getFood(listener: OnFetchDataListener<MutableList<Food>>) {
-        GetJsonFromUrl(listener,FoodEntry.COLLECTIONS).execute(baseUrl)
-        Log.e("TEST" , "URL")
+        GetJsonFromUrl(listener, FoodEntry.COLLECTIONS).execute(baseUrl)
     }
 
     private object Holder {
@@ -24,7 +20,6 @@ class FoodRemoteDataSource : FoodDataSource.Remote {
     }
 
     companion object {
-        val instance : FoodRemoteDataSource by lazy { Holder.INSTANCE }
+        val instance: FoodRemoteDataSource by lazy { Holder.INSTANCE }
     }
-
 }

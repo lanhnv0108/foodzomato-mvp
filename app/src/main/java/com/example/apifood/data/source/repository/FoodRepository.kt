@@ -10,9 +10,7 @@ class FoodRepository private constructor(
     private val remote: FoodDataSource.Remote,
     private val local: FoodDataSource.Local
 ) {
-    /**
-     * get data from Remote
-     */
+
     fun getFood(listener: OnFetchDataListener<MutableList<Food>>) {
         remote.getFood(listener)
     }
@@ -25,6 +23,6 @@ class FoodRepository private constructor(
     }
 
     companion object {
-        val instance : FoodRepository by lazy { Holder.INSTANCE }
+        val instance: FoodRepository by lazy { Holder.INSTANCE }
     }
 }

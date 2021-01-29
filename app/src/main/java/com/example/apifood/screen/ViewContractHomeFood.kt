@@ -5,20 +5,13 @@ import com.example.apifood.utils.BasePresenter
 import java.lang.Exception
 
 interface ViewContractHomeFood {
-    /**
-     * View
-     */
-    interface View{
+
+    interface View {
         fun onGetViewSuccess(foods: MutableList<Food>)
         fun onError(exception: Exception?)
     }
-    /**
-     * Presenter
-     */
-    interface Presenter : BasePresenter<View>{
-        /**
-         * from repository
-         */
+
+    interface Presenter : BasePresenter<View> {
         fun getMovie()
     }
 }

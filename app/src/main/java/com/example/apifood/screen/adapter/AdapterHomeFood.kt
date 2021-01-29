@@ -11,8 +11,21 @@ import com.example.apifood.utils.OnItemRecyclerViewClickListener
 import kotlinx.android.synthetic.main.item_food.view.*
 
 class AdapterHomeFood : RecyclerView.Adapter<AdapterHomeFood.ViewHolder>() {
+
     private val foods = mutableListOf<Food>()
     private var onItemClickListener: OnItemRecyclerViewClickListener<Food>? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
+        return ViewHolder(view, onItemClickListener)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.binData(foods[position])
+    }
+
+    override fun getItemCount(): Int = foods.size
+
     fun updateData(food: MutableList<Food>?) {
         food?.let {
             this.foods.clear()
@@ -26,17 +39,6 @@ class AdapterHomeFood : RecyclerView.Adapter<AdapterHomeFood.ViewHolder>() {
     ) {
         onItemClickListener = onItemRecyclerViewClickListener
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
-        return ViewHolder(view, onItemClickListener)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binData(foods[position])
-    }
-
-    override fun getItemCount(): Int = foods.size
 
     inner class ViewHolder(
         itemView: View,
@@ -62,6 +64,5 @@ class AdapterHomeFood : RecyclerView.Adapter<AdapterHomeFood.ViewHolder>() {
         override fun onClick(v: View?) {
             listener?.onItemClickListener(foods[adapterPosition])
         }
-
     }
 }

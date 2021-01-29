@@ -12,12 +12,25 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeFood : AppCompatActivity(), ViewContractHomeFood.View,
     OnItemRecyclerViewClickListener<Food> {
+
     private val adapter: AdapterHomeFood by lazy { AdapterHomeFood() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initView()
         initData()
+    }
+
+    override fun onGetViewSuccess(foods: MutableList<Food>) {
+        adapter.updateData(foods)
+    }
+
+    override fun onError(exception: Exception?) {
+        Toast.makeText(this, exception?.message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onItemClickListener(item: Food?) {
+        Toast.makeText(this, item?.title, Toast.LENGTH_LONG).show()
     }
 
     private fun initView() {
@@ -30,21 +43,5 @@ class HomeFood : AppCompatActivity(), ViewContractHomeFood.View,
         val presenter = HomeFoodPresenter(FoodRepository.instance)
         presenter.setView(this)
         presenter.onStart()
-
     }
-
-    override fun onGetViewSuccess(foods: MutableList<Food>) {
-        adapter.updateData(foods)
-    }
-
-    override fun onError(exception: Exception?) {
-        Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onItemClickListener(item: Food?) {
-        Toast.makeText(this , item?.title , Toast.LENGTH_LONG).show()
-
-    }
-
-
 }

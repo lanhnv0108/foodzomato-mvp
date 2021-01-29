@@ -13,6 +13,7 @@ class GetJsonFromUrl<T>(
     private val listener: OnFetchDataListener<T>,
     private val keyEntity : String
 ):AsyncTask<String? , Void? , String?>() {
+
     private var exception : Exception? = null
     override fun doInBackground(vararg params: String?): String {
 
@@ -36,6 +37,5 @@ class GetJsonFromUrl<T>(
             @Suppress("UNCHECKED_CAST")
             listener.onSuccess(ParseDataWithJson().parseJsonToData(jsonObject, keyEntity) as T)
         }else listener.onError(exception)
-
     }
 }

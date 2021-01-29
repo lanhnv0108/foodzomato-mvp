@@ -4,15 +4,9 @@ import com.example.apifood.data.model.Food
 import com.example.apifood.data.source.remote.OnFetchDataListener
 
 interface FoodDataSource {
-    /**
-     * Local
-     */
-    interface Local
 
-    /**
-     * Remote
-     */
+    interface Local
     interface Remote {
-        fun getFood(listener : OnFetchDataListener<MutableList<Food>>)
+        fun getFood(listener: OnFetchDataListener<MutableList<Food>>)
     }
 }

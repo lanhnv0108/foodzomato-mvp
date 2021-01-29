@@ -3,6 +3,7 @@ package com.example.apifood.data.source.local
 import com.example.apifood.data.source.FoodDataSource
 
 class FoodLocalDataSource : FoodDataSource.Local{
+
     private object Holder{
         val INSTANCE = FoodLocalDataSource()
     }
@@ -10,3 +11,4 @@ class FoodLocalDataSource : FoodDataSource.Local{
         val instance : FoodLocalDataSource by lazy { Holder.INSTANCE }
     }
 }
+

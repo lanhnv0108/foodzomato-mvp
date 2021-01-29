@@ -11,6 +11,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class ParseDataWithJson {
+
     fun getJonFromUrl(urlString: String?): String {
         val url = URL(urlString)
         val httpURLConnection = url.openConnection() as HttpURLConnection
@@ -55,13 +56,10 @@ class ParseDataWithJson {
                     data.add(it)
                 }
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
-
         }
         return data
-
     }
 
     private fun parseJsonToObject(jsonObject: JSONObject?, keyEntity: String): Any? {
@@ -75,7 +73,6 @@ class ParseDataWithJson {
                     else -> null
                 }
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
