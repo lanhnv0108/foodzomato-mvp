@@ -1,4 +1,4 @@
-package com.example.demop
+package com.example.apifood
 
 import org.junit.Test
 
